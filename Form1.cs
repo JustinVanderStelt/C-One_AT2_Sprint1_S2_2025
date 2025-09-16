@@ -130,6 +130,7 @@ namespace C_One_AT2_Sprint1_S2_2025
         {
             for (int i = 0; i < max;i++)
             {
+
                 int value;
                 object cellValue = dataGridViewArray.Rows[0].Cells[i].Value;
                 if (cellValue != null && int.TryParse(cellValue.ToString(), out value))
