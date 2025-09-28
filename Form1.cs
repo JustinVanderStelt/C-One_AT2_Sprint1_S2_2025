@@ -102,7 +102,7 @@ namespace C_One_AT2_Sprint1_S2_2025
         private void ShowArray()
         {
             listBoxResults.Items.Clear();
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < arraySize; i++)
             {
                 listBoxResults.Items.Add(myArray[i]);
             }
@@ -112,10 +112,10 @@ namespace C_One_AT2_Sprint1_S2_2025
         {
             // Create a random number
             Random rand = new Random();
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < arraySize; i++)
             {
                 // Random number 10..90
-                myArray[i] = rand.Next(10, 91);
+                myArray[i] = rand.Next(10, 90);
             }
             LoadArrayToGrid();
         }
