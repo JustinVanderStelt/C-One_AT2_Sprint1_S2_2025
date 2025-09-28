@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Justin Van der Stelt, Justin Van der Stelt, Sprint 1
+ * Date: 21/09/2025
+ * Version: V1
+ * Astronomical Proccessing
+ * A system to store the values of the number of neutrino interactions per hour at a local observatory.
+ *  
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +29,9 @@ namespace C_One_AT2_Sprint1_S2_2025
             LoadArrayToGrid();
         }
         // Array of random integers
-        const int max = 24;
-        int[] myArray = new int[max];
+        const int max = 90;
+        const int arraySize = 24;
+        int[] myArray = new int[arraySize];
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -42,7 +50,7 @@ namespace C_One_AT2_Sprint1_S2_2025
                         myArray[inner + 1] = myArray[inner];
                         myArray[inner] = temp;
                     }
-                    // Code to demostare the bubble sort 
+                    // Code to demostrate the bubble sort 
                     ShowArray();
                     Application.DoEvents();
                     Thread.Sleep(100);
@@ -57,7 +65,7 @@ namespace C_One_AT2_Sprint1_S2_2025
         {
             SaveGridToArray();
             int mid;
-            int lowBound = 0;
+            int lowBound = 10;
             int highBound = max - 1;
             int target;
             if (!(Int32.TryParse(textBoxSearch.Text, out target)))
