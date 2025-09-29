@@ -31,11 +31,14 @@ namespace C_One_AT2_Sprint1_S2_2025
         // Array of random integers
         const int max = 24;
         int[] myArray = new int[max];
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
         }
-        private void ButtonSort_Click(object sender, EventArgs e)
+        private async void ButtonSort_Click(object sender, EventArgs e)
         {
+            // Temporarily disabes the button to prevent crashing
+            buttonSort.Enabled = false;
+
             SaveGridToArray();
             int temp = 0;
             for (int outer = 0; outer < max - 1; outer++)
@@ -52,12 +55,14 @@ namespace C_One_AT2_Sprint1_S2_2025
                     // Code to demostrate the bubble sort 
                     ShowArray();
                     Application.DoEvents();
-                    Thread.Sleep(100);
+                    await Task.Delay(100);
                     textBoxInnerFOR.Text = inner.ToString();
                     textBoxOuterFOR.Text = outer.ToString();
                 }
             }
             LoadArrayToGrid();
+            // Re-eneables the button
+            buttonSort.Enabled = true;
         }
         // Method to display array
         private void ButtonSearch_Click(object sender, EventArgs e)
@@ -81,7 +86,7 @@ namespace C_One_AT2_Sprint1_S2_2025
                 // Find the mid-point
                 mid = (low + high) / 2;
                 // Pause with a messagebox
-                MessageBox.Show("Searching index range: Low:" + low + " Mid:" + mid + " High:" + high);
+                MessageBox.Show("Low:" + low + " Mid:" + mid + " High:" + high);
                 if (myArray[mid] == target)
                 {
                     // Target has been found
