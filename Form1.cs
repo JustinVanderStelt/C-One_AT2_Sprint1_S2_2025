@@ -29,9 +29,8 @@ namespace C_One_AT2_Sprint1_S2_2025
             LoadArrayToGrid();
         }
         // Array of random integers
-        const int max = 90;
-        const int arraySize = 24;
-        int[] myArray = new int[arraySize];
+        const int max = 24;
+        int[] myArray = new int[max];
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -60,27 +59,29 @@ namespace C_One_AT2_Sprint1_S2_2025
             }
             LoadArrayToGrid();
         }
-        // Method to deisplay array
+        // Method to display array
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            SaveGridToArray();
             int mid;
-            int lowBound = 10;
-            int highBound = max - 1;
+            int low = 0;
+            int high = max - 1;
             int target;
+
+            SaveGridToArray();
+
             if (!(Int32.TryParse(textBoxSearch.Text, out target)))
             {
                 MessageBox.Show("You must enter an integer");
                 return;
             }
-            while (lowBound <= highBound) // Check "<" or "<="
+            while (low <= high) // Check "<" or "<="
             {
                 // Display list
                 ShowArray();
                 // Find the mid-point
-                mid = (lowBound + highBound) / 2;
+                mid = (low + high) / 2;
                 // Pause with a messagebox
-                MessageBox.Show("Low:" + lowBound + "Mid:" + mid + "High:" + highBound);
+                MessageBox.Show("Searching index range: Low:" + low + " Mid:" + mid + " High:" + high);
                 if (myArray[mid] == target)
                 {
                     // Target has been found
@@ -89,20 +90,21 @@ namespace C_One_AT2_Sprint1_S2_2025
                 }
                 else if (myArray[mid] > target)
                 {
-                    highBound = mid - 1;
+                    high = mid - 1;
                 }
                 else
                 {
-                    lowBound = mid + 1;
+                    low = mid + 1;
                 }
             }
             MessageBox.Show("Not Found, try again.");
         }
+
         //Mehtod to display array    
         private void ShowArray()
         {
             listBoxResults.Items.Clear();
-            for (int i = 0; i < arraySize; i++)
+            for (int i = 0; i < max; i++)
             {
                 listBoxResults.Items.Add(myArray[i]);
             }
@@ -112,10 +114,10 @@ namespace C_One_AT2_Sprint1_S2_2025
         {
             // Create a random number
             Random rand = new Random();
-            for (int i = 0; i < arraySize; i++)
+            for (int i = 0; i < max; i++)
             {
                 // Random number 10..90
-                myArray[i] = rand.Next(10, 90);
+                myArray[i] = rand.Next(10,91);
             }
             LoadArrayToGrid();
         }
