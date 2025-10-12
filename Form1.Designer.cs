@@ -34,9 +34,10 @@
             this.textBoxOuterFOR = new System.Windows.Forms.TextBox();
             this.textBoxInnerFOR = new System.Windows.Forms.TextBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewArray = new System.Windows.Forms.DataGridView();
             this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonShowGridData = new System.Windows.Forms.Button();
+            this.buttonLoadData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArray)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(604, 137);
+            this.buttonSort.Location = new System.Drawing.Point(604, 109);
             this.buttonSort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(112, 35);
@@ -63,7 +64,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(604, 257);
+            this.buttonSearch.Location = new System.Drawing.Point(604, 266);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(112, 35);
@@ -74,7 +75,7 @@
             // 
             // textBoxOuterFOR
             // 
-            this.textBoxOuterFOR.Location = new System.Drawing.Point(622, 366);
+            this.textBoxOuterFOR.Location = new System.Drawing.Point(604, 203);
             this.textBoxOuterFOR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxOuterFOR.Name = "textBoxOuterFOR";
             this.textBoxOuterFOR.ReadOnly = true;
@@ -83,7 +84,7 @@
             // 
             // textBoxInnerFOR
             // 
-            this.textBoxInnerFOR.Location = new System.Drawing.Point(622, 440);
+            this.textBoxInnerFOR.Location = new System.Drawing.Point(604, 154);
             this.textBoxInnerFOR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxInnerFOR.Name = "textBoxInnerFOR";
             this.textBoxInnerFOR.ReadOnly = true;
@@ -92,20 +93,12 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(604, 198);
+            this.textBoxSearch.Location = new System.Drawing.Point(604, 311);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(148, 26);
             this.textBoxSearch.TabIndex = 5;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(622, 589);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 26);
-            this.textBox1.TabIndex = 7;
             // 
             // dataGridViewArray
             // 
@@ -115,28 +108,48 @@
             this.dataGridViewArray.Location = new System.Drawing.Point(861, 42);
             this.dataGridViewArray.Name = "dataGridViewArray";
             this.dataGridViewArray.RowHeadersVisible = false;
+            this.dataGridViewArray.RowHeadersWidth = 62;
             this.dataGridViewArray.RowTemplate.Height = 28;
-            this.dataGridViewArray.Size = new System.Drawing.Size(270, 544);
+            this.dataGridViewArray.Size = new System.Drawing.Size(270, 545);
             this.dataGridViewArray.TabIndex = 8;
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(622, 525);
+            this.buttonEdit.Location = new System.Drawing.Point(604, 381);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(113, 33);
+            this.buttonEdit.Size = new System.Drawing.Size(112, 32);
             this.buttonEdit.TabIndex = 9;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonShowGridData
+            // 
+            this.buttonShowGridData.Location = new System.Drawing.Point(604, 446);
+            this.buttonShowGridData.Name = "buttonShowGridData";
+            this.buttonShowGridData.Size = new System.Drawing.Size(148, 35);
+            this.buttonShowGridData.TabIndex = 10;
+            this.buttonShowGridData.Text = "Show Grid Data";
+            this.buttonShowGridData.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadData
+            // 
+            this.buttonLoadData.Location = new System.Drawing.Point(604, 52);
+            this.buttonLoadData.Name = "buttonLoadData";
+            this.buttonLoadData.Size = new System.Drawing.Size(112, 34);
+            this.buttonLoadData.TabIndex = 11;
+            this.buttonLoadData.Text = "Load Data";
+            this.buttonLoadData.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.buttonLoadData);
+            this.Controls.Add(this.buttonShowGridData);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.dataGridViewArray);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.textBoxInnerFOR);
             this.Controls.Add(this.textBoxOuterFOR);
@@ -161,9 +174,10 @@
         private System.Windows.Forms.TextBox textBoxOuterFOR;
         private System.Windows.Forms.TextBox textBoxInnerFOR;
         private System.Windows.Forms.TextBox textBoxSearch;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridViewArray;
         private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonShowGridData;
+        private System.Windows.Forms.Button buttonLoadData;
     }
 }
 

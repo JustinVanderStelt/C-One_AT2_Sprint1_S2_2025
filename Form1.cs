@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,19 +25,20 @@ namespace C_One_AT2_Sprint1_S2_2025
         public Form1()
         {
             InitializeComponent();
-            // Call a method to fill array a start up
+            // Call a method to fill array at start up
             FillArray();
+            ShowArray();
             LoadArrayToGrid();
         }
         // Array of random integers
         const int max = 24;
         int[] myArray = new int[max];
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
         }
         private async void ButtonSort_Click(object sender, EventArgs e)
         {
-            // Temporarily disabes the button to prevent crashing
+            // Temporarily disables the button to prevent crashing
             buttonSort.Enabled = false;
 
             SaveGridToArray();
@@ -79,26 +81,32 @@ namespace C_One_AT2_Sprint1_S2_2025
                 MessageBox.Show("You must enter an integer");
                 return;
             }
-            while (low <= high) // Check "<" or "<="
+            // Clear previous results
+            listBoxResults.Items.Clear();
+
+            // The search loop
+            while (low <= high)
             {
-                // Display list
+                // Visual demonstration of the process (as used in your existing code)
                 ShowArray();
-                // Find the mid-point
+                Application.DoEvents();
+
                 mid = (low + high) / 2;
-                // Pause with a messagebox
-                MessageBox.Show("Low:" + low + " Mid:" + mid + " High:" + high);
+
                 if (myArray[mid] == target)
                 {
-                    // Target has been found
-                    listBoxResults.Items.Add("Found at index " + mid);
+                    // Show the position (index)
+                    listBoxResults.Items.Add($"Found at index {mid}");
                     return;
                 }
                 else if (myArray[mid] > target)
                 {
+                    // Target is in the lower half
                     high = mid - 1;
                 }
                 else
                 {
+                    // Target is in the upper half
                     low = mid + 1;
                 }
             }
@@ -122,16 +130,15 @@ namespace C_One_AT2_Sprint1_S2_2025
             for (int i = 0; i < max; i++)
             {
                 // Random number 10..90
-                myArray[i] = rand.Next(10,91);
+                myArray[i] = rand.Next(10, 91);
             }
             LoadArrayToGrid();
         }
-
         private void LoadArrayToGrid()
         {
             dataGridViewArray.Rows.Clear();
             dataGridViewArray.Columns.Clear();
-            for (int i = 0;i < max; i++)
+            for (int i = 0; i < max; i++)
             {
                 dataGridViewArray.Columns.Add($"col{i}", i.ToString());
             }
@@ -143,7 +150,7 @@ namespace C_One_AT2_Sprint1_S2_2025
         }
         private void SaveGridToArray()
         {
-            for (int i = 0; i < max;i++)
+            for (int i = 0; i < max; i++)
             {
                 int value;
                 object cellValue = dataGridViewArray.Rows[0].Cells[i].Value;
@@ -166,6 +173,40 @@ namespace C_One_AT2_Sprint1_S2_2025
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             SaveGridToArray(); // Test github
+            LoadGridToListBox();
+        }
+        private void LoadGridToListBox()
+        {
+            // Clear any existing items in the ListBox
+            listBoxResults.Items.Clear();
+
+            // Check if the DataGridView has any rows
+            if (dataGridViewArray.Rows.Count > 0)
+            {
+                // The data is in the first row (index 0) of the grid
+                DataGridViewRow dataRow = dataGridViewArray.Rows[0];
+
+                // Loop through each cell in that row
+                foreach (DataGridViewCell cell in dataRow.Cells)
+                {
+                    // Check if the cell has a value before adding it
+                    if (cell.Value != null)
+                    {
+                        // Add the cell's value to the ListBox
+                        listBoxResults.Items.Add(cell.Value.ToString());
+                    }
+                }
+            }
+        }
+        
+        private void buttonShowGridData_Click(object sender, EventArgs e)
+        {
+            LoadGridToListBox();
+        }
+        
+        private void buttonLoadData_Click(object sender, EventArgs e)
+        {
+            FillArray();
             ShowArray();
         }
     }
